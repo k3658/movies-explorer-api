@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const { linkRegex } = require('../utils/regex');
-
 const movieSchema = new mongoose.Schema({
   counry: {
     type: String,
@@ -28,7 +26,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (v) => linkRegex.test(v),
+      validator: (string) => validator.isURL(string),
       message: 'Неверный формат ссылки.',
     },
   },
@@ -36,7 +34,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (v) => linkRegex.test(v),
+      validator: (string) => validator.isURL(string),
       message: 'Неверный формат ссылки.',
     },
   },
@@ -44,7 +42,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (v) => linkRegex.test(v),
+      validator: (string) => validator.isURL(string),
       message: 'Неверный формат ссылки.',
     },
   },
