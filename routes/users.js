@@ -12,6 +12,4 @@ const {
 usersRouter.get('/me', getCurrentUser);
 usersRouter.patch('/me', validateUserInfo, updateUserInfo);
 
-module.exports = {
-  usersRouter,
-};
+module.exports = usersRouter;
