@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    default: 'Райан Гослинг',
+    required: true,
     minlength: 2,
     maxlength: 30,
   },

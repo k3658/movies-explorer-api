@@ -14,9 +14,9 @@ rootRouter.post('/signup', validateSignUp, createUser);
 rootRouter.post('/signin', validateSignIn, login);
 
 rootRouter.use('/users', auth, usersRouter);
-rootRouter.use('/cards', auth, moviesRouter);
+rootRouter.use('/movies', auth, moviesRouter);
 
-rootRouter.use((req, res, next) => {
+rootRouter.use(auth, (req, res, next) => {
   next(new NotFoundError(errorMessages.MESSAGE_ERROR_NOT_FOUND));
 });
 

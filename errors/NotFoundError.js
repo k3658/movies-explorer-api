@@ -1,10 +1,10 @@
 const { statusCodes } = require('./errors');
 
-class ForbiddenError extends Error {
+class NotFoundError extends Error {
   constructor(message) {
     super(message);
-    this.statusCode = statusCodes.ERROR_FORBIDDEN;
+    this.statusCode = statusCodes.ERROR_NOT_FOUND;
   }
 }
 
-module.exports = ForbiddenError;
+module.exports = NotFoundError;

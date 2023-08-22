@@ -9,7 +9,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 const BadRequestError = require('../errors/BadRequestError');
-const { errorMessages } = require('../errors/errors');
+const { errorMessages, statusCodes } = require('../errors/errors');
 
 // AUTH
 const createUser = (req, res, next) => {
@@ -60,7 +60,7 @@ const login = (req, res, next) => {
 
 // GET
 const getCurrentUser = (req, res, next) => {
-  const { userId } = req.user._id;
+  const userId = req.user._id;
 
   User.findById(userId)
     .then((user) => {
@@ -95,7 +95,15 @@ const updateUserInfo = (req, res, next) => {
         res.send(user);
       }
     })
-    .catch(next);
+    .catch((err) => {
+      if (err instanceof mongoose.Error.ValidationError) {
+        next(new BadRequestError(errorMessages.BadRequestError));
+      } else if (err.code === 11000) {
+        next(new ConflictError(errorMessages.MESSAGE_ERROR_CONFLICT));
+      } else {
+        next(err);
+      }
+    });
 };
 
 module.exports = {
