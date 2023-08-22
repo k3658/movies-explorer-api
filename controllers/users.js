@@ -9,7 +9,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 const BadRequestError = require('../errors/BadRequestError');
-const { errorMessages, statusCodes } = require('../errors/errors');
+const { errorMessages } = require('../errors/errors');
 
 // AUTH
 const createUser = (req, res, next) => {
