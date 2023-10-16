@@ -2,7 +2,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.124.65
+IP-адрес 158.160.34.107
 
 Frontend https://filmskk36.nomoreparties.co
 
